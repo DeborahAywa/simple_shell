@@ -8,7 +8,7 @@
 
 char *read_line(void)
 {
-	char *entry_buffer;
+	char *entry_buffer = NULL;
 	size_t entry_size;
 	ssize_t val;
 	int i = 0;

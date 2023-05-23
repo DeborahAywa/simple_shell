@@ -11,7 +11,8 @@ int check_path(char *str)
 	char *path = "/bin/", *ptr, *j;
 	int p = 0, q = 0;
 
-	ptr = malloc(sizeof(char) * 100);
+	/*Allocate anfd initialize memoryto zero*/
+	ptr = calloc(100, sizeof(char));
 	if (ptr == NULL)
 		return (0);
 	while (path[p] != '\0')

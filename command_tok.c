@@ -10,10 +10,10 @@
 
 char **com_tok(char *str)
 {
-	char **string_array, *string_ptr;
-	int i = 0, j = 0;
+	char **string_array, *string_ptr, **temp;
+	int i = 0, j = 0, n = 10;
 
-	string_array = malloc(sizeof(char *) * 10);
+	string_array = malloc(sizeof(char *) * n);
 	if (string_array == NULL)
 	{
 		perror("Can't allocate space");
@@ -32,6 +32,19 @@ char **com_tok(char *str)
 		j++;
 		i = 0;
 		string_ptr = strtok(NULL, " ");
+
+		/*Double the size of memory*/
+		if (j == n)
+		{
+			n *= 2;
+			temp = realloc(string_array, sizeof(char *) * n);
+			if (temp == NULL)
+			{
+				perror("Cannot reallocate space");
+				exit(1);
+			}
+			string_array = temp;
+		}
 	}
 	string_array[j] = NULL;
 	return (string_array);
