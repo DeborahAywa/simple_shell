@@ -25,7 +25,7 @@ void exec(char **string, char *envp[])
 	if (pid == 0)
 	{
 		if (execve(string[0], string, envp) == -1)
-			perror(" No such file or directory \n");
+			perror("Error (execve)");
 	}
 	else
 	{
