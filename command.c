@@ -23,14 +23,15 @@ void cmd(char **av, char **env)
 		if (a == -1)
 			return;
 		buff = read_line();
-		if (!buff)
-			return;
-		string = com_tok(buff);
-		if (_strcmp("exit", string[0]) == 0)
+		if (*buff != '\n')
 		{
-			free(buff);
-			free(string);
-			break;
+			string = com_tok(buff);
+			if (_strcmp("exit", string[0]) == 0)
+			{
+				free(buff);
+				free(string);
+				break;
+			}
 		}
 		exec(string, env);
 		free(buff);
