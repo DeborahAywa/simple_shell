@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <dirent.h>
+#include <stdbool.h>
 
 void exec(char **string, char *envp[]);
 char *read_line(void);

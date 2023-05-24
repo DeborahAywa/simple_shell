@@ -13,13 +13,15 @@ void cmd(char **av, char **env)
 	size_t len = 9;
 	ssize_t a;
 	char **string;
+	bool pipe = false;
 
-	while (1)
+	while (1 && !pipe)
 	{
-		if (isatty(STDIN_FILENO))
-			a = write(1, prompt, len);
-			if (a == -1)
-				return;
+		if (isatty(STDIN_FILENO) == 0)
+			pipe = true;
+		a = write(1, prompt, len);
+		if (a == -1)
+			return;
 		buff = read_line();
 		if (!buff)
 			return;
