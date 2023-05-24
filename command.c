@@ -32,8 +32,8 @@ void cmd(char **av, char **env)
 				free(string);
 				break;
 			}
+			exec(string, env);
 		}
-		exec(string, env);
 		free(buff);
 		free(string);
 	}
