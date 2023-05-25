@@ -30,7 +30,7 @@ void cmd(char **av, char **env)
 			{
 				free(buff);
 				free(string);
-				break;
+				dn_exit(0);
 			}
 			exec(string, env);
 		}
