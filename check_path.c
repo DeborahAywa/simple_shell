@@ -19,9 +19,9 @@ char *check_path(char *str)
 			full_path = malloc(LEN);
 
 			strcpy(full_path, path_tkn);
-			strcat(full_path, "/");
-			strcat(full_path, str);
-			strcat(full_path, "\0");
+			_strcat(full_path, "/");
+			_strcat(full_path, str);
+			_strcat(full_path, "\0");
 			if (access(full_path, X_OK) == 0)
 			{
 				free(path_cpy);
