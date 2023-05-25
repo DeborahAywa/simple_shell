@@ -24,6 +24,6 @@ char *_strcat(char *dest, char *src);
 void cmd(char **av, char **env);
 int main(int ac, char **av, char **env);
 int env_p(char **args);
-int dn_exit(char **par);
+
 
 #endif
