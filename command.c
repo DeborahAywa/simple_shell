@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * cmd - function that executes commands
  * @av:array of commands passed
@@ -30,8 +29,10 @@ void cmd(char **av, char **env)
 			{
 				free(buff);
 				free(string);
-				dn_exit(0);
-			}
+				return;
+			}else if(_strcmp(string[0],"env") == 0)
+				env_p();
+
 			exec(string, env);
 		}
 		free(buff);

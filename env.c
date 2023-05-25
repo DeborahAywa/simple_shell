@@ -6,10 +6,10 @@
  * Return: 1 on success, 0 otherwise
  */
 
-int env_p(char **args)
+int env_p(void)
 {
     	int i = 0;
-    	(void)(**args);
+    	
 
     	while (environ[i])
     	{
