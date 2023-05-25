@@ -12,6 +12,10 @@
 #include <dirent.h>
 #include <stdbool.h>
 
+#define BUFFER_SIZE 1000
+
+extern char **environ;
+
 void exec(char **string, char *envp[]);
 char *read_line(void);
 int _strcmp(char *s1, char *s2);
@@ -21,5 +25,8 @@ int check_path(char *str);
 char *_strcat(char *dest, char *src);
 void cmd(char **av, char **env);
 int main(int ac, char **av, char **env);
+int env_p(void);
+char *search_path(char *cmd);
+
 
 #endif
