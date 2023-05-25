@@ -22,6 +22,8 @@ void cmd(char **env)
 		if (a == -1)
 			return;
 		buff = read_line();
+		if (!strcmp("", buff))
+		continue;
 		if (*buff != '\n')
 		{
 			string = com_tok(buff);
