@@ -1,7 +1,6 @@
 #include "shell.h"
 /**
- * __env - prints environment variables
- * @args: arguments
+ * env_p - prints environment variables
  *
  * Return: 1 on success, 0 otherwise
  */
@@ -10,7 +9,7 @@ int env_p(void)
 {
     	int i = 0;
     	
-
+        /*global external environ declared in shell.h*/
     	while (environ[i])
     	{
         	write(1, environ[i], strlen(environ[i]));
