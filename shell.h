@@ -24,5 +24,6 @@ char *check_path(char *str);
 char *_strcat(char *dest, char *src);
 void cmd(char **env);
 int main(int ac, char **env);
+char *dn_strcpy(char *dest, char *src);
 
 #endif
