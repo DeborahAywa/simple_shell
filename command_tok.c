@@ -7,7 +7,6 @@
  * @str:string to be tokenized
  * Return:Array of strings
  */
-
 char **com_tok(char *str)
 {
 	char **string_array, *string_ptr, **temp;

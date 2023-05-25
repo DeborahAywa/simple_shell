@@ -6,6 +6,7 @@
  * @env:environment path array
  * Return:Nothing
  */
+
 void cmd(char **av, char **env)
 {
 	char *buff;
@@ -30,8 +31,11 @@ void cmd(char **av, char **env)
 			{
 				free(buff);
 				free(string);
-				break;
+				return;
 			}
+			else if (_strcmp(string[0], "env") == 0)
+				env_p();
+
 			exec(string, env);
 		}
 		free(buff);
