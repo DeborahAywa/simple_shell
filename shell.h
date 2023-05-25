@@ -23,8 +23,8 @@ char **com_tok(char *str);
 char *file_link(char *str);
 int check_path(char *str);
 char *_strcat(char *dest, char *src);
-void cmd(char **av, char **env);
-int main(int ac, char **av, char **env);
+void cmd(char **env);
+int main(int ac, char **env);
 int env_p(void);
 char *search_path(char *cmd);
 

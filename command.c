@@ -1,12 +1,11 @@
 #include "shell.h"
 /**
  * cmd - function that executes commands
- * @av:array of commands passed
  * @env:environment path array
  * Return:Nothing
  */
 
-void cmd(char **av, char **env)
+void cmd(char **env)
 {
 	char *buff;
 	const char *prompt = "#cisfun$ ";
@@ -31,14 +30,7 @@ void cmd(char **av, char **env)
 				free(buff);
 				free(string);
 				return;
-<<<<<<< HEAD
 			}
-			else if (_strcmp(string[0], "env") == 0)
-=======
-			}else if(_strcmp(string[0],"env") == 0)
->>>>>>> 5903f8da5dd83683e753fee260a28324faf210d5
-				env_p();
-
 			exec(string, env);
 		}
 		free(buff);
