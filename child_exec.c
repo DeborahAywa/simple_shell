@@ -1,34 +1,43 @@
 #include "shell.h"
-
 /**
  * exec-function that executes string passed
- * to the command line in the child process
  *
  * @string:Array of string from the command
  * line
  * @envp:environment variables from the parent
  *
- * Return:returns void
+ * Return:returns -1 on failure
  */
-
-void exec(char **string, char *envp[])
+int exec(char **string, char *envp[])
 {
+	char *command = NULL;
+	char *full_path = NULL;
 	pid_t pid;
 	int status;
 
-	pid = fork();
-	if (pid == -1)
+	if (string)
 	{
-		free(string);
-		exit(EXIT_FAILURE);
+		command = string[0];
+
+		full_path = check_path(command);
+		pid = fork();
+
+		if (pid == 0)
+		{
+			if (execve(full_path, string, envp) == -1)
+				perror("execve failed");
+			exit(1);
+		}
+		else if (pid < 0)
+			perror("fork() failed");
+		else
+		{
+			do waitpid(pid, &status, WUNTRACED);
+			while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		free(full_path);
+		}
 	}
-	if (pid == 0)
-	{
-		if (execve(string[0], string, envp) == -1)
-			perror("Error (execve)");
-	}
-	else
-	{
-		wait(&status);
-	}
+
+	return (-1);
+
 }

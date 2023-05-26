@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * com_tok- function that tokenizes a string
  * passed by the user
@@ -9,42 +8,40 @@
  */
 char **com_tok(char *str)
 {
-	char **string_array, *string_ptr, **temp;
-	int i = 0, j = 0, n = 10;
+	int buffsize = LEN;
+	char *token;
+	char *token_delim = " ";
+	char **token_array = malloc(sizeof(char) * buffsize);
+	int i = 0;
 
-	string_array = malloc(sizeof(char *) * n);
-	if (string_array == NULL)
+	if (!token_array)
 	{
-		perror("Can't allocate space");
+		perror("Allocation Error");
 		exit(1);
 	}
-	string_ptr = strtok(str, " ");
-	while (string_ptr != NULL)
-	{
-		while (string_ptr[i])
-		{
-			if (string_ptr[i] == '\n')
-				string_ptr[i] = '\0';
-			i++;
-		}
-		string_array[j] = string_ptr;
-		j++;
-		i = 0;
-		string_ptr = strtok(NULL, " ");
 
-		/*Double the size of memory*/
-		if (j == n)
+	token = strtok(str, token_delim);
+
+	while (token != NULL)
+	{
+		token_array[i] = token;
+		i++;
+
+		if (i >= buffsize)
 		{
-			n *= 2;
-			temp = realloc(string_array, sizeof(char *) * n);
-			if (temp == NULL)
+			buffsize += LEN;
+			token_array = malloc(sizeof(char) * buffsize);
+			if (!token_array)
 			{
-				perror("Cannot reallocate space");
+				perror("Allocation Error");
 				exit(1);
 			}
-			string_array = temp;
 		}
+
+		token = strtok(NULL, token_delim);
 	}
-	string_array[j] = NULL;
-	return (string_array);
+
+	token_array[i] = NULL;
+	return (token_array);
 }
+

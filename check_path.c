@@ -1,41 +1,45 @@
 #include "shell.h"
-
 /**
  * check_path - function to check the path
  * of the string passed
  * @str:string to be checked
- * Return:1 on success and 0 on failure
+ * Return: command
  */
-int check_path(char *str)
+char *check_path(char *str)
 {
-	char *path = "/bin/", *ptr, *j;
-	int p = 0, q = 0;
+	char *path = getenv("PATH");
+	char *path_cpy, *path_tkn, *full_path;
 
-	/*Allocate anfd initialize memoryto zero*/
-	ptr = calloc(100, sizeof(char));
-	if (ptr == NULL)
-		return (0);
-	while (path[p] != '\0')
+	if (path)
 	{
-		if (path[p] != str[p])
+		path_cpy = strdup(path);
+		path_tkn = strtok(path_cpy, ":");
+		while (path_tkn != NULL)
 		{
-			free(ptr);
-			return (0);
+			full_path = malloc(LEN);
+
+			dn_strcpy(full_path, path_tkn);
+			_strcat(full_path, "/");
+			_strcat(full_path, str);
+			_strcat(full_path, "\0");
+			if (access(full_path, X_OK) == 0)
+			{
+				free(path_cpy);
+				return (full_path);
+			}
+			else
+			{
+				free(full_path);
+				path_tkn = strtok(NULL, ":");
+			}
 		}
-		p++;
+		free(path_cpy);
+		if (access(str, X_OK) == 0)
+			return (str);
+
+		return (NULL);
 	}
-	while (str[p] != '\0')
-	{
-		ptr[q] = str[p];
-		q++;
-		p++;
-	}
-	ptr[q] = '\0';
-	j = file_link(ptr);
-	if (j != NULL)
-	{
-		free(ptr);
-		return (1);
-	}
-	return (0);
+
+	return (NULL);
 }
+
