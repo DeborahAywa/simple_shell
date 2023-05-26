@@ -15,7 +15,7 @@ char *search_path(char *cmd)
 		path_token = strtok(duplicate, ":");
 		while (path_token != NULL)
 		{
-			full_path = malloc(BUFFER_SIZE);
+			full_path = malloc(LEN);
 			strcpy(full_path, path_token);
 			strcat(full_path, "/");
 			strcat(full_path, cmd);
