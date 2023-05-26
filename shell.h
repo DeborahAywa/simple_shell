@@ -25,8 +25,5 @@ int check_path(char *str);
 char *_strcat(char *dest, char *src);
 void cmd(char **env);
 int main(int ac, char **env);
-int env_p(void);
-char *search_path(char *cmd);
-
 
 #endif
