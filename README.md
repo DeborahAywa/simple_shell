@@ -1,0 +1,1 @@
+Simple shell project. Final project for the first sprint(3 months) in ALX Software engineering course.The project was meant to test our understanding on the following; Basics of programming, Basics of C and Basics of thinking like an engineer
