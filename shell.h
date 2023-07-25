@@ -221,4 +221,7 @@ int find_builtin(command_t *command);
 void find_cmd(command_t *command);
 void fork_cmd(command_t *command);
 
+/*the entry point of the shell program*/
+int main(int ac, char **av);
+
 #endif
