@@ -177,4 +177,11 @@ char **get_environ(command_t *command);
 int my_unsetenv(command_t *command, char *var);
 int _setenv(command_t *command, char *var, char *value);
 
+/*functions to handle errors error_functions.c*/
+int _erratoi(char *s);
+void print_error(command_t *command, char *estr);
+int print_d(int input, int fd);
+char *convert_number(long int num, int base, int flags);
+void remove_comments(char **buf);
+
 #endif
