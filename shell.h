@@ -197,4 +197,16 @@ int replace_alias(command_t *command);
 int replace_vars(command_t *command);
 int replace_string(char *old, char *new);
 
+/*builtin function emulators builtin_functions.c*/
+int _myexit(command_t *command);
+int _mycd(command_t *command);
+int _myhelp(command_t *command);
+
+/*more builtin function emulators builtin2_functions.c*/
+int _myhistory(command_t *command);
+int unset_alias(command_t *command, char *str);
+int set_alias(command_t *command, char *str);
+int print_alias(list_t *node);
+int _myalias(command_t *command);
+
 #endif
