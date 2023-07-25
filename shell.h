@@ -50,6 +50,55 @@ typedef struct liststr
 	struct liststr *next;
 } list_t;
 
+/**
+ * struct command - pseudo-arguments to pass into function
+ * allowing for uniform prototype for function pointer struct
+ * @arg:string containing arguments
+ * @argv:array of strings generated from arg
+ * @path:path for the current command
+ * @argc:argument count
+ * @line_count:error count
+ * @err_num:the error code for exit()s
+ * @linecount_flag:counts line of input
+ * @fname:file name
+ * @env:copy of environ of linked list
+ * @environ:copy of environment
+ * @history:the history node
+ * @alias:alias node
+ * @env_changed:if the environment was changed
+ * @status:return status of the last executed command
+ * @cmd_buf:address of pointer to cmd_buf, chain buffer for memory management
+ * @cmd_buf_type:CMD_type
+ * @readfd:the file descriptor from which to read line input
+ * @histcount:the number of lines from the history
+ *
+ */
+
+typedef struct command
+{
+	char *arg;
+	char **argv;
+	char *path;
+	int argc;
+	unsigned int line_count;
+	int err_num;
+	int linecount_flag;
+	char *fname;
+	list_t *env;
+	list_t *history;
+	list_t *alias;
+	char **environ;
+	int env_changed;
+	int status;
+	char **cmd_buf;
+	int cmd_buf_type;
+	int readfd;
+	int histcount;
+} command_t;
+
+#define COMMAND_INIT
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0}
+
 /*string functions str_functions.c*/
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
@@ -91,5 +140,10 @@ list_t *node_starts_with(list_t *node, char *prefix, char s);
 list_t *add_node(list_t **head, const char *str, int num);
 list_t *add_node_end(list_t **head, const char *str);
 size_t print_list_str(const list_t *h);
+
+/*command.c functions*/
+void clear_command(command_t *command);
+void set_command(command_t *command, char **av);
+void free_command(command_t *command, int p);
 
 #endif
