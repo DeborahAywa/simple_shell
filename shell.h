@@ -224,4 +224,9 @@ void fork_cmd(command_t *command);
 /*the entry point of the shell program*/
 int main(int ac, char **av);
 
+/*functions to remove and set the environment variables*/
+char **get_environ(command_t *command);
+int _unset(command_t *command, char *var);
+int _setenv(command_t *command, char *var, char *value);
+
 #endif
