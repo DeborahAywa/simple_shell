@@ -209,4 +209,10 @@ int set_alias(command_t *command, char *str);
 int print_alias(list_t *node);
 int _myalias(command_t *command);
 
+/*Functions that check if a shell is interactive, checks for delimeter*/
+int interactive(command_t *command);
+int is_delim(char c, char *delim);
+int _isalpha(int c);
+int _atoi(char *s);
+
 #endif
