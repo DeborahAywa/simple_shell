@@ -215,4 +215,10 @@ int is_delim(char c, char *delim);
 int _isalpha(int c);
 int _atoi(char *s);
 
+/*loop functions for the shell program*/
+int hsh(command_t *command, char **av);
+int find_builtin(command_t *command);
+void find_cmd(command_t *command);
+void fork_cmd(command_t *command);
+
 #endif
