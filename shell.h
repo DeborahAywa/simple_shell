@@ -184,4 +184,10 @@ int print_d(int input, int fd);
 char *convert_number(long int num, int base, int flags);
 void remove_comments(char **buf);
 
+/*puts functions puts.c*/
+int _eputchar(char c);
+void _eputs(char *str);
+int _putfd(char c, int fd);
+int _putsfd(char *str, int fd);
+
 #endif
