@@ -158,4 +158,11 @@ int read_history(command_t *command);
 int build_history_list(command_t *command, char *buf, int linecount);
 int renumber_history(command_t *command);
 
+/* functions that use getline getline.c*/
+ssize_t input_buf(command_t *command, char **buf, size_t *len);
+ssize_t get_input(command_t *command);
+ssize_t read_buf(command_t *command, char *buf, size_t *i);
+int _getline(command_t *command, char **ptr, size_t *length);
+void sigintHandler(int sig_num) __attribute__((unused));
+
 #endif
