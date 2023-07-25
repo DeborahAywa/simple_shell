@@ -39,12 +39,12 @@ char *_strncpy(char *dest, char *src, int n)
 }
 
 /**
- * ffree - function that frees a string of strings
+ * free_string - function that frees a string of strings
  *
  * @str:string of strings
  * Return:nothing
  */
-void ffree(char **str)
+void free_string(char **str)
 {
 	char **s = str;
 
@@ -56,12 +56,12 @@ void ffree(char **str)
 }
 
 /**
- * bfree - function that frees a pointer and NULLs the address
+ * free_pointer - function that frees a pointer and NULLs the address
  * @str:address of the pointer to free
  *
  * Return: 1 if freed and 0 otherwise
  */
-int bfree(void *str)
+int free_pointer(void *str)
 {
 	if (str && *str)
 	{

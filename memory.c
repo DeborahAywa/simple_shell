@@ -20,21 +20,6 @@ char *_memset(char *s, char b, unsigned int n)
 }
 
 /**
- * _free - function that frees a string of strings
- * @str:string of strings
- */
-void _free(char **str)
-{
-	char **s = str;
-
-	if (!str)
-		return;
-	while (*str)
-		free(*str++);
-	free(s);
-}
-
-/**
  * _realloc - function that reallocates a block of memory
  * @ptr:pointer to previous malloc allocated memory
  * @prev:byte size of previous block
@@ -60,21 +45,4 @@ void *_realloc(void *ptr, unsigned int prev, unsigned int next)
 		s[prev] = ((char *)ptr)[prev];
 	free(ptr);
 	return (s);
-}
-
-/**
- * free_address - function that frees a pointer to free
- * @str:address of the pointer to free
- *
- * Return: 1 on success and 0 on failure
- */
-int free_address(void **str)
-{
-	if (str && *str)
-	{
-		free(*str);
-		*str = NULL;
-		return (1);
-	}
-	return (0);
 }
