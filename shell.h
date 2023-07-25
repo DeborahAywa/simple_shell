@@ -146,4 +146,16 @@ void clear_command(command_t *command);
 void set_command(command_t *command, char **av);
 void free_command(command_t *command, int p);
 
+/*functions to find if commands are in the path*/
+int is_cmd(command_t *command, char *path);
+char *dup_chars(char *pathstr, int start, int stop);
+char *find_path(command_t *command, char *pathstr, char *cmd);
+
+/*history functions file_history.c*/
+char *get_history_file(command_t *command);
+int write_history(command_t *command);
+int read_history(command_t *command);
+int build_history_list(command_t *command, char *buf, int linecount);
+int renumber_history(command_t *command);
+
 #endif
