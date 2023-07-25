@@ -165,4 +165,16 @@ ssize_t read_buf(command_t *command, char *buf, size_t *i);
 int _getline(command_t *command, char **ptr, size_t *length);
 void sigintHandler(int sig_num) __attribute__((unused));
 
+/*Environment functions env_functions.c*/
+int _myenv(command_t *command);
+char *_getenv(command_t *command, const char *name);
+int _mysetenv(command_t *command);
+int _unsetenv(command_t *command);
+int populate_env_list(command_t *command);
+
+/*More environment functions env2_functions.c*/
+char **get_environ(command_t *command);
+int my_unsetenv(command_t *command, char *var);
+int _setenv(command_t *command, char *var, char *value);
+
 #endif
