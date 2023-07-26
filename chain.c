@@ -119,7 +119,7 @@ int replace_vars(command_t *command)
 	{
 		if (command->argv[i][0] != '$' || !command->argv[i][1])
 			continue;
-		if (_strcmp(command->argv[i], "$ ?"))
+		if (!_strcmp(command->argv[i], "$ ?"))
 		{
 			replace_string(&(command->argv[i]),
 					_strdup(convert_number(command->status, 10, 0)));

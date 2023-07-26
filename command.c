@@ -24,13 +24,13 @@ void set_command(command_t *command, char **av)
 	command->fname = av[0];
 	if (command->arg)
 	{
-		command->argv = strtok(command->arg, "\t");
+		command->argv = _strtok(command->arg, "\t");
 		if (!command->argv)
 		{
 			command->argv = malloc(sizeof(char *) * 2);
 			if (command->argv)
 			{
-				command->argv[0] = strdup(command->argv);
+				command->argv[0] = _strdup(command->argv);
 				command->argv[1] = NULL;
 			}
 		}
