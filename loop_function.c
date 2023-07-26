@@ -29,6 +29,7 @@ int hsh(command_t *command, char **av)
 		}
 		else if (interactive(command))
 			_putchar('\n');
+		free_command(command, 0);
 	}
 	write_history(command);
 	free_command(command, 1);
@@ -36,7 +37,7 @@ int hsh(command_t *command, char **av)
 		exit(command->status);
 	if (builtin_ret == -2)
 	{
-		if (command->err_num == -2)
+		if (command->err_num == -1)
 			exit(command->status);
 		exit(command->err_num);
 	}
@@ -57,7 +58,7 @@ int find_builtin(command_t *command)
 {
 	int i, builtin_in_ret = -1;
 
-	builtin_table builtin01[] = {
+	builtin_table builtinp[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
 		{"help", _myhelp},
@@ -67,14 +68,14 @@ int find_builtin(command_t *command)
 		{"alias", _myalias},
 			{NULL, NULL}
 	};
-	for (i = 0; builtin01[i].type; i++)
-		if (_strcmp(command->argv[0], builtin01[1].type) == 0)
+	for (i = 0; builtinp[i].type; i++)
+		if (_strcmp(command->argv[0], builtinp[1].type) == 0)
 		{
 			command->line_count++;
-			builtin_in_ret = builtin01[i].find(command);
+			builtin_in_ret = builtinp[i].func(command);
 			break;
 		}
-	return (built_in_ret);
+	return (builtin_in_ret);
 }
 
 /**
@@ -92,7 +93,7 @@ void find_cmd(command_t *command)
 	command->path = command->argv[0];
 	if (command->linecount_flag == 1)
 	{
-		command->linecount++;
+		command->line_count++;
 		command->linecount_flag = 0;
 	}
 	for (i = 0; k = 0; command->arg[i]; i++)
@@ -108,7 +109,9 @@ void find_cmd(command_t *command)
 	}
 	else
 	{
-		if ((interactive(command) || _getenv(command, "PATH = ") || command->argv[0][0] == '/') && is_cmd(command, command->argv[0]))
+		if ((interactive(command) || _getenv(command, "PATH = ")
+					|| command->argv[0][0] == '/')
+					&& is_cmd(command, command->argv[0]))
 			fork_cmd(command);
 		else if (*(command->arg) != '\n')
 		{
@@ -138,7 +141,7 @@ void fork_cmd(command_t *command)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(command->path, command->argv, get_environ(command) == -1))
+		if (execve(command->path, command->argv, get_environ(command)) == -1)
 		{
 			free_command(command, 1);
 			if (errno == EACCESS)
