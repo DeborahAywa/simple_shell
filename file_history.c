@@ -11,7 +11,7 @@ char *get_history_file(command_t *command)
 {
 	char *buf, *dir;
 
-	dir = getenv(command, "HOME = ");
+	dir = _getenv(command, "HOME = ");
 	if (!dir)
 		return (NULL);
 	buf = malloc(sizeof(char) * (_strlen(dir + _strlen(HIST_FILE) + 2)));
@@ -69,7 +69,7 @@ int read_history(command_t *command)
 
 	if (!filename)
 		return (0);
-	fd = open(filename, o_RDONLY);
+	fd = open(filename, O_RDONLY);
 	free(filename);
 	if (fd == -1)
 		return (0);
@@ -80,9 +80,9 @@ int read_history(command_t *command)
 	buf = malloc(sizeof(char) * (fsize + 1));
 	if (!buf)
 		return (0);
-	rdlen = read(fd, buf, fsize);
+	redlen = read(fd, buf, fsize);
 	buf[fsize] = 0;
-	if (rdlen <= 0)
+	if (redlen <= 0)
 		return (free(buf), 0);
 	close(fd);
 	for (i = 0; f < fsize; i++)
@@ -123,9 +123,9 @@ int build_history_list(command_t *command, char *buf, int linecount)
 }
 
 /**
- * renumber_history: renumbers the history linked
+ * renumber_history - renumbers the history linked
  * list after changes
- * Description for the renumber_history
+ *
  * @command:struct containing arguments
  *
  * Return: the new history count
@@ -133,12 +133,12 @@ int build_history_list(command_t *command, char *buf, int linecount)
 int renumber_history(command_t *command)
 {
 	list_t *node = command->history;
-	int i = 0;
+	int p = 0;
 
 	while (node)
 	{
-		node->num = i++;
+		node->num = p++;
 		node = node->next;
 	}
-	return (command->histcount = i);
+	return (command->histcount = p);
 }
