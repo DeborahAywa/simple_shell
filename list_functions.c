@@ -22,22 +22,27 @@ size_t print_list_str(const list_t *h)
 }
 
 /**
- * free_list - free list_t list
- * @head:pointer to list_t to be freed
+ * free_list -function that frees list_t list
+ * @head_ptr:pointer to list_t to be freed
  *
  */
 
-void free_list(list_t *head)
+void free_list(list_t **head_ptr)
 {
-	list_t *temp;
+	list_t *node, *next_node, *head;
 
-	while (head)
+	if (!head_ptr || !*head_ptr)
+		return;
+	head = *head_ptr;
+	node = head;
+	while (node)
 	{
-		temp = head->next;
-		free(head->str);
-		free(head);
-		head = temp;
+		next_node = node->next;
+		free(node->str);
+		free(node);
+		node = next_node;
 	}
+	*head_ptr = NULL;
 }
 
 /**
@@ -52,33 +57,34 @@ void free_list(list_t *head)
 
 int delete_node_at_index(list_t **head, unsigned int index)
 {
-	listint_t *temp = *head;
-	listint_t *current = NULL;
-	unsigned int p = 0;
+	list_t *node, *prev_node;
+	unsigned int i = 0;
 
-	if (*head == NULL)
-	{
+	if (!head | !*head)
 		return (0);
-	}
-	if (index == 0)
+	if (!index)
 	{
+		node = *head;
 		*head = (*head)->next;
-		free(temp);
+		free(node->str);
+		free(node);
 		return (1);
 	}
-	while (p < index - 1)
+	node = *head;
+	while (node)
 	{
-		if (!temp || !(temp->next))
+		if (i == index)
 		{
-			return (-1);
+			prev_node->next = node->next;
+			free(node->str);
+			free(node);
+			return (1);
 		}
-		temp = temp->next;
-		p++;
+		i++;
+		prev_node = node;
+		node = node->next;
 	}
-	current = temp->next;
-	temp->next = current->next;
-	free(current);
-	return (1);
+	return (0);
 }
 
 /**

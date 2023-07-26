@@ -126,7 +126,7 @@ void *_realloc(void *ptr, unsigned int prev, unsigned int next);
 
 /*list_t functions list_functions.c*/
 size_t print_list_str(const list_t *h);
-void free_list(list_t *head);
+void free_list(list_t **head_ptr);
 int delete_node_at_index(list_t **head, unsigned int index);
 char **list_to_string(list_t *head);
 ssize_t get_node_index(list_t *head, list_t *node);
