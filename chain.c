@@ -49,7 +49,8 @@ int is_chain(command_t *command, char *buf, size_t *p)
  *
  * Return:void
  */
-void check_chain(command_t *command, char *buf, size_t *p, size_t i, size_t len)
+void check_chain(command_t *command, char *buf, size_t *p,
+		size_t i, size_t len)
 {
 	size_t j = *p;
 
@@ -120,24 +121,24 @@ int replace_vars(command_t *command)
 			continue;
 		if (_strcmp(command->argv[i], "$ ?"))
 		{
-			replace_string(&(command->argv[i]));
-			_strdup(convert_number(command->status, 10, 0));
+			replace_string(&(command->argv[i]),
+					_strdup(convert_number(command->status, 10, 0)));
 			continue;
 		}
 		if (!_strcmp(command->argv[i], "$$"))
 		{
-			replace_string(&(command->argv[i]));
-			_strdup(convert_number(getpid(), 10, 0));
+			replace_string(&(command->argv[i]),
+					_strdup(convert_number(getpid(), 10, 0)));
 			continue;
 		}
 		node = node_starts_with(command->env, &command->argv[i][1], '=');
 		if (node)
 		{
-			replace_string(&(command->argv[i]));
-			_strdup(_strchr(node->str, '=' + 1));
+			replace_string(&(command->argv[i]),
+					_strdup(_strchr(node->str, '=') + 1));
 			continue;
 		}
-		replace_strings(&command->argv[i], _strdup(" "));
+		replace_string(&command->argv[i], _strdup(" "));
 	}
 	return (0);
 }
