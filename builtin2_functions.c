@@ -16,12 +16,12 @@ int _myhistory(command_t *command)
 }
 
 /**
- * unset_alias - function that removes alias
+ * unset_alias - function that puts alias to string
  *
  * @command:struct containing potential arguments
  * @str: the string alias
  *
- * Return:Always 0
+ * Return:Always 0 and 1 on error
  */
 int unset_alias(command_t *command, char *str)
 {

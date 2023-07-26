@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _myexit function that exits shell
+ * _myexit -  function that exits shell
  * @command: structure containing potential arguments
  *
  * Return:exits with a given exit state 0. If
@@ -62,7 +62,7 @@ int _mycd(command_t *command)
 		}
 		_puts(_getenv(command, "OLDPWD = "));
 		_putchar('\n');
-		chdir_ret = chdir((dir = _getenv(command, "OLDPWD =")) ? dir : "/");
+		chdir_ret = chdir(dir = _getenv(command, "OLDPWD =") ? dir : "/");
 	}
 	else
 		chdir_ret = chdir(command->argv[1]);
