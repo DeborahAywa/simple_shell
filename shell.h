@@ -96,8 +96,8 @@ typedef struct command
 	int histcount;
 } command_t;
 
-#define COMMAND_INIT
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 0}
+#define COMMAND_INIT\
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \ 0, 0, 0}
 
 /*string functions str_functions.c*/
 int _strcmp(char *s1, char *s2);

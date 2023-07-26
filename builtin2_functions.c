@@ -33,7 +33,7 @@ int unset_alias(command_t *command, char *str)
 		return (1);
 	c = *p;
 	*p = 0;
-	ret = delete_node_at_index(&command->alias), get_node_index, (command->alias, node_starts_with(command->alias, str, -1));
+	ret = delete_node_at_index(&(command->alias), get_node_index(command->alias, node_starts_with(command->alias, str, -1)));
 	*p = c;
 	return (ret);
 }
@@ -74,9 +74,9 @@ int print_alias(list_t *node)
 		p = _strchr(node->str, '=');
 		for (a = node->str; a <= p; a++)
 			_putchar(*a);
-		_putchar('=');
-		_putchar(p + 1);
-		_putchar("\n");
+		_putchar('\");
+		_puts(p + 1);
+		_puts("'\n');
 		return (0);
 	}
 	return (1);
