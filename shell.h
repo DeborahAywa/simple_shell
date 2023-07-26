@@ -125,7 +125,7 @@ char *_memset(char *s, char b, unsigned int n);
 void *_realloc(void *ptr, unsigned int prev, unsigned int next);
 
 /*list_t functions list_functions.c*/
-size_t print_list(const list_t *h);
+size_t print_list_str(const list_t *h);
 void free_list(list_t *head);
 int delete_node_at_index(list_t **head, unsigned int index);
 char **list_to_string(list_t *head);
