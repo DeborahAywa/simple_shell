@@ -7,7 +7,7 @@
  * @command:structure containing potential arguments to be
  * passed
  *
- * Return; Always return 0
+ * Return:Always return 0
  */
 char **get_environ(command_t *command)
 {
@@ -27,7 +27,7 @@ char **get_environ(command_t *command)
  *
  * Return: 1 when deleted and 0 otherwise
  */
-int _unset(command_t *command, char *var)
+int _unsetenv(command_t *command, char *var)
 {
 	list_t *node = command->env;
 	size_t j;
