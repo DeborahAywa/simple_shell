@@ -42,7 +42,7 @@ void _eputs(char *str)
 }
 
 /**
- * _putfd: function that writes the character c to the given fd
+ * _putfd -  function that writes the character c to the given fd
  * @c:the character to print
  * @fd: the file descriptor to write to
  *
