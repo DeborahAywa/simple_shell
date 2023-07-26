@@ -138,7 +138,7 @@ list_t *node_starts_with(list_t *node, char *prefix, char s);
 
 /*additional list_t functions list3_functions.c*/
 list_t *add_node(list_t **head, const char *str, int num);
-list_t *add_node_end(list_t **head, const char *str);
+list_t *add_node_end(list_t **head, const char *str, int n);
 size_t print_list_str(const list_t *h);
 
 /*command.c functions*/
