@@ -84,10 +84,11 @@ int print_alias(list_t *node)
 }
 
 /**
- * _myalias - function that mimics the alias builtins
- * @command:structure of potential arguments
+ * _myalias - function that acts like the command alias
  *
- * Return:Always 0
+ * @command:structure containing potential arguments
+ *
+ * Return: Always return a 0
  */
 int _myalias(command_t *command)
 {
@@ -107,7 +108,7 @@ int _myalias(command_t *command)
 	}
 	for (i = 1; command->argv[i]; i++)
 	{
-		p = _strch(command->argv[i], '=');
+		p = _strchr(command->argv[i], '=');
 		if (p)
 			set_alias(command, command->argv[i]);
 		else
