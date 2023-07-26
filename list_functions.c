@@ -1,13 +1,13 @@
 #shell.h
 
 /**
- * print_list - function that prints all the
- * elements of linked list list_t
+ * print_list_str - function that only prints the str
+ * of a linked list
  * @h:pointer to the list_t list to be print
  *
  * Return:number of nodes to be printed
  */
-size_t print_list(const list_t *h)
+size_t print_list_str(const list_t *h)
 {
 	size_t p = 0;
 
@@ -110,7 +110,7 @@ char **list_to_string(list_t *head)
 			free(result);
 			return (NULL);
 		}
-		str = strcpy(str, node->str);
+		str = _strcpy(str, node->str);
 		result[i] = str;
 	}
 	result[i] = NULL;
