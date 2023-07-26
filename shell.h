@@ -163,7 +163,7 @@ ssize_t input_buf(command_t *command, char **buf, size_t *len);
 ssize_t get_input(command_t *command);
 ssize_t read_buf(command_t *command, char *buf, size_t *i);
 int _getline(command_t *command, char **ptr, size_t *length);
-void sigintHandler(int sig_num) __attribute__((unused));
+void sigintHandler(__attribute__((unused))int sig_num);
 
 /*Environment functions env_functions.c*/
 int _myenv(command_t *command);

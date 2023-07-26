@@ -130,13 +130,13 @@ int _getline(command_t *command, char **ptr, size_t *length)
 	r = read_buf(command, buf, &len);
 	if (r == -1 || r == 0 && len == 0)
 		return (-1);
-	c = _strch(buf + i, '\n');
+	c = _strchr(buf + i, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
 	new_p = _realloc(p, s, ? s + k : k + 1);
 	if (!new_p)
 		return (p ? free(p), -1 : -1);
 	if (s)
-		_strcat(new_p, buf + i, k - i);
+		_strncat(new_p, buf + i, k - i);
 	else
 		_strncpy(new_p, buf + i, k - i + 1);
 	s += k - 1;
@@ -154,7 +154,7 @@ int _getline(command_t *command, char **ptr, size_t *length)
  *
  * Return: nothing
  */
-void sigintHandler(int sig_num) __attribute__((unused))
+void sigintHandler(__attribute__((unused))int sig_num)
 {
 	_puts("\n");
 	_puts("$ ");
