@@ -13,7 +13,7 @@ int _myexit(command_t *command)
 
 	if (command->argv[1])
 	{
-		exit_check = erratoi(command->argv[1]);
+		exit_check = _erratoi(command->argv[1]);
 		if (exit_check == -1)
 		{
 			command->status = 2;
@@ -62,13 +62,13 @@ int _mycd(command_t *command)
 		}
 		_puts(_getenv(command, "OLDPWD = "));
 		_putchar('\n');
-		chdir_ret = chdir(dir = _getenv(command, "OLDPWD =") ? dir : "/");
+		chdir_ret = chdir((dir = _getenv(command, "OLDPWD =")) ? dir : "/");
 	}
 	else
 		chdir_ret = chdir(command->argv[1]);
 	if (chir_ret == -1)
 	{
-		print_error(command, "can't cd to ");
+		print_error(command, "can't change directory to ");
 		_eputs(command->argv[1], _eputchar('\n'));
 	}
 	else
@@ -91,7 +91,7 @@ int _myhelp(command_t *command)
 	char **arg_array;
 
 	arg_array = command->argv;
-	_puts("help call works. function not yet implemented \n");
+	_puts("help call, function not yet implemented \n");
 	if (0)
 		_puts(*arg_array);
 	return (0);
