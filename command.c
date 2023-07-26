@@ -35,12 +35,10 @@ void set_command(command_t *command, char **av)
 			}
 		}
 		for (i = 0; command->argv && command->argv[i]; i++)
-		{
-			command->argc++;
-		}
+			command->argc = i;
+		replace_alias(command);
+		replace_vars(command);
 	}
-	replace_alias(command);
-	replace_vars(command);
 }
 
 /**
@@ -50,7 +48,7 @@ void set_command(command_t *command, char **av)
  */
 void free_command(command_t *command, int p)
 {
-	ffree(command->argv);
+	free_string(command->argv);
 	command->argv = NULL;
 	command->path = NULL;
 
