@@ -43,7 +43,7 @@ void print_error(command_t *command, char *estr)
 	_eputs(": ");
 	print_d(command->line_count, STDERR_FILENO);
 	_eputs(": ");
-	_euts(command->argv[0]);
+	_eputs(command->argv[0]);
 	_eputs(": ");
 	_eputs(estr);
 }
@@ -58,7 +58,7 @@ void print_error(command_t *command, char *estr)
  */
 int print_d(int input, int fd)
 {
-	int (*_putchar)(char) = _putchar;
+	int (*__putchar)(char) = _putchar;
 	int i, count = 0;
 	unsigned int _abs_, current;
 
@@ -66,25 +66,25 @@ int print_d(int input, int fd)
 		__putchar = _eputchar;
 	if (input < 0)
 	{
-		_abs = _input;
+		_abs_ = _input;
 		__putchar('-');
 		count++;
 	}
 	else
-		_abs = input;
+		_abs_ = input;
 	current  = _abs_;
 	for (i = 1000000000; i > 1; 1 /= 10)
 	{
 		if (_abs_ / i)
 		{
-			_putchar('0' + current / i);
+			__putchar('0' + current / i);
 			count++;
-			current %= i;
 		}
+		current %= i;
+	}
 		__putchar('0' + current);
 		count++;
 		return (count);
-	}
 }
 
 /**

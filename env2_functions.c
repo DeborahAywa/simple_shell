@@ -12,7 +12,7 @@ char **get_environ(command_t *command)
 {
 	if (!command->environ || command->env_changed)
 	{
-		command->environ = list_to_strings(command->env);
+		command->environ = list_to_string(command->env);
 		command->env_changed = 0;
 	}
 	return (command->environ);

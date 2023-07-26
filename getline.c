@@ -128,7 +128,7 @@ int _getline(command_t *command, char **ptr, size_t *length)
 	if (i == len)
 		i = len = 0;
 	r = read_buf(command, buf, &len);
-	if (r == -1 || r == 0 && len == 0)
+	if (r == -1 || (r == 0 && len == 0))
 		return (-1);
 	c = _strchr(buf + i, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
@@ -139,7 +139,7 @@ int _getline(command_t *command, char **ptr, size_t *length)
 		_strncat(new_p, buf + i, k - i);
 	else
 		_strncpy(new_p, buf + i, k - i + 1);
-	s += k - 1;
+	s += k - i;
 	i = k;
 	p = new_p;
 	if (length)

@@ -30,7 +30,7 @@ void set_command(command_t *command, char **av)
 			command->argv = malloc(sizeof(char *) * 2);
 			if (command->argv)
 			{
-				command->argv[0] = _strdup(command->argv);
+				command->argv[0] = _strdup(command->arg);
 				command->argv[1] = NULL;
 			}
 		}

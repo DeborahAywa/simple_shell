@@ -151,7 +151,7 @@ int replace_vars(command_t *command)
  *
  * Return: 1 on success 0 otherwise
  */
-int replace_string(char *old, char *new)
+int replace_string(char **old, char *new)
 {
 	free(*old);
 	*old = new;

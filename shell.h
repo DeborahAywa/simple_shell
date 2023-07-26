@@ -11,6 +11,7 @@
 #include <limits.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <stddef.h>
 
 /*READ AND WRITE BUFFERS*/
 #define WRITE_BUF_SIZE 1024
@@ -90,7 +91,7 @@ typedef struct command
 	char **environ;
 	int env_changed;
 	int status;
-	char **cmd_buf;
+	char **cmd_buf;/*pointer to cmd;chain buffer for memory management*/
 	int cmd_buf_type;
 	int readfd;
 	int histcount;
@@ -195,7 +196,7 @@ int is_chain(command_t *command, char *buf, size_t *p);
 void check_chain(command_t *command, char *buf, size_t *p, size_t i, size_t len);
 int replace_alias(command_t *command);
 int replace_vars(command_t *command);
-int replace_string(char *old, char *new);
+int replace_string(char **old, char *new)
 
 /*builtin function emulators builtin_functions.c*/
 int _myexit(command_t *command);

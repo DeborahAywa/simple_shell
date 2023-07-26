@@ -58,7 +58,7 @@ int find_builtin(command_t *command)
 {
 	int i, builtin_in_ret = -1;
 
-	builtin_table builtinp[] = {
+	builtin_table builtintbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
 		{"help", _myhelp},
@@ -68,11 +68,11 @@ int find_builtin(command_t *command)
 		{"alias", _myalias},
 			{NULL, NULL}
 	};
-	for (i = 0; builtinp[i].type; i++)
-		if (_strcmp(command->argv[0], builtinp[1].type) == 0)
+	for (i = 0; builtintbl[i].type; i++)
+		if (_strcmp(command->argv[0], builtintb1[1].type) == 0)
 		{
 			command->line_count++;
-			builtin_in_ret = builtinp[i].func(command);
+			builtin_in_ret = builtintbl[i].func(command);
 			break;
 		}
 	return (builtin_in_ret);
@@ -144,7 +144,7 @@ void fork_cmd(command_t *command)
 		if (execve(command->path, command->argv, get_environ(command)) == -1)
 		{
 			free_command(command, 1);
-			if (errno == EACCESS)
+			if (errno == EACCES)
 				exit(126);
 			exit(1);
 		}

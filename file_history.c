@@ -14,7 +14,7 @@ char *get_history_file(command_t *command)
 	dir = _getenv(command, "HOME = ");
 	if (!dir)
 		return (NULL);
-	buf = malloc(sizeof(char) * (_strlen(dir + _strlen(HIST_FILE) + 2)));
+	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
 	if (!buf)
 		return (NULL);
 	buf[0] = 0;

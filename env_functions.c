@@ -63,11 +63,11 @@ int _myunsetenv(command_t *command)
 
 	if (command->argc == 1)
 	{
-		eputs("Few arguments .\n");
+		_eputs("Few arguments .\n");
 		return (1);
 	}
 	for (j = 1; j <= command->argc; j++)
-		_unsetenv(command, command->argv[i]);
+		_unsetenv(command, command->argv[j]);
 	return (0);
 }
 

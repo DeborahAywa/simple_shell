@@ -66,15 +66,14 @@ int _mycd(command_t *command)
 	}
 	else
 		chdir_ret = chdir(command->argv[1]);
-	if (chir_ret == -1)
+	if (chdir_ret == -1)
 	{
 		print_error(command, "can't change directory to ");
-		_eputs(command->argv[1], _eputchar('\n'));
+		_eputs(command->argv[1]), _eputchar('\n');
 	}
 	else
 	{
-		_setenv(command, "OLDPWD");
-		_getenv(command, "PWD = ");
+		_setenv(command, "OLDPWD", _getenv(command, "PWD = ");
 		_setenv(command, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
