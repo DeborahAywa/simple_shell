@@ -169,7 +169,7 @@ void sigintHandler(int sig_num) __attribute__((unused));
 int _myenv(command_t *command);
 char *_getenv(command_t *command, const char *name);
 int _mysetenv(command_t *command);
-int _unsetenv(command_t *command);
+int _myunsetenv(command_t *command);
 int populate_env_list(command_t *command);
 
 /*More environment functions env2_functions.c*/

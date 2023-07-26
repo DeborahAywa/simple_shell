@@ -33,7 +33,8 @@ int unset_alias(command_t *command, char *str)
 		return (1);
 	c = *p;
 	*p = 0;
-	ret = delete_node_at_index(&(command->alias), get_node_index(command->alias, node_starts_with(command->alias, str, -1)));
+	ret = delete_node_at_index(&(command->alias),
+			get_node_index(command->alias, node_starts_with(command->alias, str, -1)));
 	*p = c;
 	return (ret);
 }

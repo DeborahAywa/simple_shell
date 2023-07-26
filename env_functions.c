@@ -13,9 +13,9 @@ int _myenv(command_t *command)
 }
 
 /**
- * _getenv - gets the value of an environment variable
+ * _getenv -function that  gets the value of an environ variable
  * @command:structure containing arguments
- * @name:environment name
+ * @name:the env variable name
  *
  * Return:return the value
  */
@@ -46,27 +46,27 @@ int _mysetenv(command_t *command)
 		_eputs("wrong number of arguments \n");
 		return (1);
 	}
-	if (setenv(command, command->argv[1], command->argv[2]))
+	if (_setenv(command, command->argv[1], command->argv[2]))
 		return (0);
 	return (1);
 }
 
 /**
- * _unsetenv - removes an environment variable
+ * _myunsetenv - removes an environment variable
  * @command:structure containing arguments
  *
  * Return:Always return 0
  */
-int _unsetenv(command_t *command)
+int _myunsetenv(command_t *command)
 {
-	int i;
+	int j;
 
 	if (command->argc == 1)
 	{
 		eputs("Few arguments .\n");
 		return (1);
 	}
-	for (i = 1; i <= command->argc; i++)
+	for (j = 1; j <= command->argc; j++)
 		_unsetenv(command, command->argv[i]);
 	return (0);
 }
