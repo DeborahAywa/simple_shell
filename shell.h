@@ -133,7 +133,7 @@ ssize_t get_node_index(list_t *head, list_t *node);
 
 /*more list_t functions list2_functions.c*/
 size_t list_len(const list_t *h);
-size_t print_list2(const list_t *h);
+size_t print_list(const list_t *h);
 list_t *node_starts_with(list_t *node, char *prefix, char s);
 
 /*additional list_t functions list3_functions.c*/

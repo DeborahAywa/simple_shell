@@ -21,7 +21,7 @@ size_t list_len(const list_t *h)
 }
 
 /**
- * print_list2 - prints all the elements
+ * print_list - prints all the elements
  * of a linked list
  *
  * @h:linked list of type linstint
@@ -29,7 +29,7 @@ size_t list_len(const list_t *h)
  * Return:number of nodes
  */
 
-size_t print_list2(const list_t *h)
+size_t print_list(const list_t *h)
 {
 	size_t sum = 0;
 
