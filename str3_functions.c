@@ -61,12 +61,12 @@ void free_string(char **str)
  *
  * Return: 1 if freed and 0 otherwise
  */
-int free_pointer(void *str)
+int free_pointer(void **str)
 {
-	if (str && *(char **)str)
+	if (str && *str)
 	{
-		free((*char **)str);
-		*(char **)str = NULL;
+		free(*str);
+		*str = NULL;
 		return (1);
 	}
 	return (0);
@@ -98,7 +98,7 @@ char **_strtok(char *str, char *d)
 		s = malloc(sizeof(char *) * (1 + numwords));
 		if (!s)
 			return (NULL);
-		for (i = 0, j = 0; j < numwords; j + 1)
+		for (i = 0, j = 0; j < numwords; j++)
 		{
 			while (is_delim(str[i], d))
 				i++;

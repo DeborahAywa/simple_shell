@@ -97,9 +97,9 @@ typedef struct command
 	int histcount;
 } command_t;
 
-#define COMMAND_INIT ({"", NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL,
-	NULL, 0, 0, 0, NULL, 0, 0, 0})
-
+#define COMMAND_INIT \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+		0, 0, 0}
 /**
  * struct builtin - a builtin string having related functions
  * @func:the function
@@ -129,7 +129,7 @@ int _putchar(char c);
 void _puts(char *str);
 char *_strncpy(char *dest, char *src, int n);
 void free_string(char **str);
-int free_pointer(void *str);
+int free_pointer(void **str);
 char **_strtok(char *str, char *d);
 
 /*memory functions memory.c*/
