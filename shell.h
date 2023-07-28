@@ -196,7 +196,7 @@ int is_chain(command_t *command, char *buf, size_t *p);
 void check_chain(command_t *command, char *buf, size_t *p, size_t i, size_t len);
 int replace_alias(command_t *command);
 int replace_vars(command_t *command);
-int replace_string(char **old, char *new)
+int replace_string(char **s1, char *s2);
 
 /*builtin function emulators builtin_functions.c*/
 int _myexit(command_t *command);

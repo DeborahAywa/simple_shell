@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <stdlib.h
 
 /**
  * is_chain - function that tests if current characters
@@ -146,14 +147,16 @@ int replace_vars(command_t *command)
 /**
  * replace_string - function that replaces a string
  *
- * @old:address of old string
- * @new:address of new string
+ * @s1:address of old string
+ * @s2:address of new string
  *
  * Return: 1 on success 0 otherwise
  */
-int replace_string(char **old, char *new)
+int replace_string(char **s1, char *s2)
 {
-	free(*old);
-	*old = new;
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	free(*s1);
+	*s1 = s2;
 	return (1);
 }
