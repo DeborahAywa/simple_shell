@@ -66,7 +66,7 @@ int print_d(int input, int fd)
 		__putchar = _eputchar;
 	if (input < 0)
 	{
-		_abs_ = _input;
+		_abs_ = input;
 		__putchar('-');
 		count++;
 	}
@@ -109,13 +109,13 @@ char *convert_number(long int num, int base, int flags)
 		n = -num;
 		sign = '-';
 	}
-	array = flags & CONVERT_LOWER ? "0123456789abcdef" : "0123456789ABCDEF";
+	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	ptr = (&buffer[49]);
 	*ptr = '\0';
 	do {
 		*--ptr = array[n % base];
 		n /= base;
-	} while (n != 0)
+	} while (n != 0);
 	if (sign)
 		*--ptr = sign;
 	return (ptr);
@@ -128,7 +128,7 @@ char *convert_number(long int num, int base, int flags)
  * @buf:address of the string to modify
  * Return: Always return 0
  */
-void remove_comments(char **buf)
+void remove_comments(char *buf)
 {
 	int j;
 

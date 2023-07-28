@@ -63,7 +63,7 @@ void free_string(char **str)
  */
 int free_pointer(void *str)
 {
-	if (str && *str)
+	if (str && **str)
 	{
 		free(*str);
 		*str = NULL;
@@ -98,7 +98,7 @@ char **_strtok(char *str, char *d)
 		s = malloc(sizeof(char *) * (1 + numwords));
 		if (!s)
 			return (NULL);
-		for (i = 0; j = 0; j < numwords; j + 1)
+		for (i = 0, j = 0; j < numwords; j + 1)
 		{
 			while (is_delim(str[i], d))
 				i++;
@@ -113,7 +113,7 @@ char **_strtok(char *str, char *d)
 				free(s);
 				return (NULL);
 			}
-			for (q = 0; q < k; q++)
+			for (q = 0; q < p; q++)
 				s[j][q] = str[i++];
 			s[j][q] = 0;
 		}

@@ -19,7 +19,7 @@ ssize_t input_buf(command_t *command, char **buf, size_t *len)
 		free(*buf);
 		*buf = NULL;
 		signal(SIGINT, sigintHandler);
-#IF USE _GETLINE
+#if USE _GETLINE
 		r = getline(buf, &len_p, stdin);
 #else
 		r = _getline(command, buf, &len_p);
@@ -132,7 +132,7 @@ int _getline(command_t *command, char **ptr, size_t *length)
 		return (-1);
 	c = _strchr(buf + i, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
-	new_p = _realloc(p, s, ? s + k : k + 1);
+	new_p = _realloc(p, s, s ? s + k : k + 1);
 	if (!new_p)
 		return (p ? free(p), -1 : -1);
 	if (s)

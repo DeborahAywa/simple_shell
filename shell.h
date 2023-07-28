@@ -52,6 +52,18 @@ typedef struct liststr
 } list_t;
 
 /**
+ * struct builtin - a builtin string and has related
+ * functions
+ * @func:the function
+ * @type:builtin command flag
+ */
+typedef struct builtin
+{
+	char *type;
+	int(*func)(command_t *);
+}builtin_table;
+
+/**
  * struct command - pseudo-arguments to pass into function
  * allowing for uniform prototype for function pointer struct
  * @arg:string containing arguments
@@ -140,7 +152,7 @@ list_t *node_starts_with(list_t *node, char *prefix, char s);
 
 /*additional list_t functions list3_functions.c*/
 list_t *add_node(list_t **head, const char *str, int num);
-list_t *add_node_end(list_t **head, const char *str, int n);
+list_t *add_node_end(list_t **head, const char *str, int num);
 size_t print_list_str(const list_t *h);
 
 /*command.c functions*/
@@ -184,7 +196,7 @@ int _erratoi(char *s);
 void print_error(command_t *command, char *estr);
 int print_d(int input, int fd);
 char *convert_number(long int num, int base, int flags);
-void remove_comments(char **buf);
+void remove_comments(char *buf);
 
 /*puts functions puts.c*/
 int _eputchar(char c);

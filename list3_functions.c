@@ -39,13 +39,13 @@ list_t *add_node(list_t **head, const char *str, int num)
  * node at the end of a list_t list
  * @head:double pointer to the list list_t
  * @str:string to be put in the new node
- * @n:the node index that is used by history
+ * @num:the node index that is used by history
  *
  * Return:the address of the new element
  * on success and NULL on failure
  */
 
-list_t *add_node_end(list_t **head, const char *str, int n)
+list_t *add_node_end(list_t **head, const char *str, int num)
 {
 	list_t *new_node, *node;
 
@@ -56,7 +56,7 @@ list_t *add_node_end(list_t **head, const char *str, int n)
 	if (!new_node)
 		return (NULL);
 	_memset((void *)new_node, 0, sizeof(list_t));
-	new_node->n = n;
+	new_node->num = num;
 	if (str)
 	{
 		new_node->str = _strdup(str);

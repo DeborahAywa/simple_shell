@@ -106,7 +106,7 @@ char **list_to_string(list_t *head)
 	result = malloc(sizeof(char *) * (i + 1));
 	if (!result)
 		return (NULL);
-	for (i = 0; node; node = node->next; i++)
+	for (i = 0; node; node = node->next, i++)
 	{
 		str = malloc(_strlen(node->str) + 1);
 		if (!str)

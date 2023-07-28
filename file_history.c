@@ -39,7 +39,7 @@ int write_history(command_t *command)
 
 	if (!filename)
 		return (-1);
-	fd = open(filename, O_CREAT | O_TRUNC | 0RDWR, 0644);
+	fd = open(filename, O_CREAT | O_TRUNC | O_RDWR, 0644);
 	free(filename);
 	if (fd == -1)
 		return (-1);
@@ -85,7 +85,7 @@ int read_history(command_t *command)
 	if (redlen <= 0)
 		return (free(buf), 0);
 	close(fd);
-	for (i = 0; f < fsize; i++)
+	for (i = 0; i < fsize; i++)
 		if (buf[i] == '\n')
 		{
 			buf[i] = 0;

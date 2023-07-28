@@ -64,7 +64,8 @@ int find_builtin(command_t *command)
 		{"help", _myhelp},
 		{"history", _myhistory},
 		{"setenv", _mysetenv},
-		{"cd", _mycd}
+		{"unsetenv", _myunsetenv},
+		{"cd", _mycd},
 		{"alias", _myalias},
 			{NULL, NULL}
 	};
