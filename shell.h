@@ -52,18 +52,6 @@ typedef struct liststr
 } list_t;
 
 /**
- * struct builtin - a builtin string and has related
- * functions
- * @func:the function
- * @type:builtin command flag
- */
-typedef struct builtin
-{
-	char *type;
-	int(*func)(command_t *);
-}builtin_table;
-
-/**
  * struct command - pseudo-arguments to pass into function
  * allowing for uniform prototype for function pointer struct
  * @arg:string containing arguments
@@ -112,6 +100,17 @@ typedef struct command
 #define COMMAND_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL,
 	NULL, NULL, 0, 0, NULL, \ 0, 0, 0}
+
+/**
+ * struct builtin - a builtin string having related functions
+ * @func:the function
+ * @type:builtin command flag
+ */
+typedef struct builtin
+{
+	char *type;
+	int(*func)(command_t);
+}builtin_table;
 
 /*string functions str_functions.c*/
 int _strcmp(char *s1, char *s2);
