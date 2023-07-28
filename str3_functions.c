@@ -61,12 +61,12 @@ void free_string(char **str)
  *
  * Return: 1 if freed and 0 otherwise
  */
-int free_pointer(void **str)
+int free_pointer(void *str)
 {
-	if (str && **str)
+	if (str && *(char **)str)
 	{
-		free(*str);
-		*str = NULL;
+		free((*char **)str);
+		*(char **)str = NULL;
 		return (1);
 	}
 	return (0);
