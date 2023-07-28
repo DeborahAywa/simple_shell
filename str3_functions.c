@@ -61,7 +61,7 @@ void free_string(char **str)
  *
  * Return: 1 if freed and 0 otherwise
  */
-int free_pointer(char **str)
+int free_pointer(void **str)
 {
 	if (str && **str)
 	{
@@ -120,4 +120,5 @@ char **_strtok(char *str, char *d)
 		s[j] = NULL;
 		return (s);
 	}
+	return (NULL);
 }

@@ -70,7 +70,7 @@ int find_builtin(command_t *command)
 			{NULL, NULL}
 	};
 	for (i = 0; builtintbl[i].type; i++)
-		if (_strcmp(command->argv[0], builtintb1[1].type) == 0)
+		if (_strcmp(command->argv[0], builtintbl[1].type) == 0)
 		{
 			command->line_count++;
 			builtin_in_ret = builtintbl[i].func(command);
@@ -97,7 +97,7 @@ void find_cmd(command_t *command)
 		command->line_count++;
 		command->linecount_flag = 0;
 	}
-	for (i = 0; k = 0; command->arg[i]; i++)
+	for (i = 0, k = 0; command->arg[i]; i++)
 		if (!is_delim(command->arg[i], "\t\n"))
 			k++;
 	if (!k)

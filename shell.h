@@ -85,7 +85,7 @@ typedef struct command
 	int err_num;
 	int linecount_flag;
 	char *fname;
-	list_t *env;
+	list_t *env = NULL;
 	list_t *history;
 	list_t *alias;
 	char **environ;
@@ -128,7 +128,7 @@ int _putchar(char c);
 void _puts(char *str);
 char *_strncpy(char *dest, char *src, int n);
 void free_string(char **str);
-int free_pointer(char **str);
+int free_pointer(void **str);
 char **_strtok(char *str, char *d);
 
 /*memory functions memory.c*/
