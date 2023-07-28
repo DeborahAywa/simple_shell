@@ -97,9 +97,7 @@ typedef struct command
 	int histcount;
 } command_t;
 
-#define COMMAND_INIT \
-({NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL,
-	NULL, NULL, 0, 0, NULL, \0, 0, 0})
+#define COMMAND_INIT {NULL, NULL, 0, 0, NULL, 0, 0, 0}
 
 /**
  * struct builtin - a builtin string having related functions
