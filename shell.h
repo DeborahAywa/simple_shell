@@ -151,7 +151,6 @@ list_t *node_starts_with(list_t *node, char *prefix, char s);
 /*additional list_t functions list3_functions.c*/
 list_t *add_node(list_t **head, const char *str, int num);
 list_t *add_node_end(list_t **head, const char *str, int num);
-size_t print_list_str(const list_t *h);
 
 /*command.c functions*/
 void clear_command(command_t *command);
@@ -185,9 +184,7 @@ int _myunsetenv(command_t *command);
 int populate_env_list(command_t *command);
 
 /*More environment functions env2_functions.c*/
-char **get_environ(command_t *command);
 int my_unsetenv(command_t *command, char *var);
-int _setenv(command_t *command, char *var, char *value);
 
 /*functions to handle errors error_functions.c*/
 int _erratoi(char *s);
