@@ -85,7 +85,7 @@ typedef struct command
 	int err_num;
 	int linecount_flag;
 	char *fname;
-	list_t *env = NULL;
+	list_t *env;
 	list_t *history;
 	list_t *alias;
 	char **environ;
