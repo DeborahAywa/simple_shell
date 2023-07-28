@@ -72,7 +72,7 @@ int _setenv(command_t *command, char *var, char *value)
 	if (!buf)
 		return (1);
 	_strcpy(buf, var);
-	_strcat(buf, '=');
+	_strcat(buf, "=");
 	_strcat(buf, value);
 	node = command->env;
 	while (node)

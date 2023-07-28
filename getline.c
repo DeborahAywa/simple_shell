@@ -19,7 +19,7 @@ ssize_t input_buf(command_t *command, char **buf, size_t *len)
 		free(*buf);
 		*buf = NULL;
 		signal(SIGINT, sigintHandler);
-#if USE _GETLINE
+#if USE_GETLINE
 		r = getline(buf, &len_p, stdin);
 #else
 		r = _getline(command, buf, &len_p);

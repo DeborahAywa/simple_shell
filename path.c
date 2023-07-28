@@ -35,7 +35,7 @@ char *dup_chars(char *pathstr, int start, int stop)
 	static char buf[1024];
 	int i = 0, k = 0;
 
-	for (k = 0; i = start; i < stop; i++)
+	for (k = 0, i = start; i < stop; i++)
 	{
 		if (pathstr[i] != ':')
 			buf[k++] = pathstr[i];
@@ -62,7 +62,7 @@ char *find_path(command_t *command, char *pathstr, char *cmd)
 		return (NULL);
 	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
 	{
-		if (is_cmd(command->cmd))
+		if (is_cmd(command, command->argv[0]))
 			return (cmd);
 	}
 	while (1)

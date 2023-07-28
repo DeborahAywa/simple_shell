@@ -19,7 +19,7 @@ char *_strdup(const char *str)
 	result = malloc(sizeof(char) * (i + 1));
 	if (!result)
 		return (NULL);
-	for (i++; i--)
+	for (i++; i--;)
 		result[i] = *--str;
 	return (result);
 }

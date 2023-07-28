@@ -61,7 +61,7 @@ void free_string(char **str)
  *
  * Return: 1 if freed and 0 otherwise
  */
-int free_pointer(void *str)
+int free_pointer(char **str)
 {
 	if (str && **str)
 	{
