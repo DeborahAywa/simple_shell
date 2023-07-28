@@ -98,18 +98,3 @@ char *_strcpy(char *dest, char *src)
 
 	return (dest);
 }
-
-/**
- * _puts-function that prints a string
- *
- * @str:string to be printed
- */
-
-void _puts(char *str)
-{
-	while (*str != '\0')
-	{
-		_putchar(*str++);
-	}
-	_putchar('\n');
-}
