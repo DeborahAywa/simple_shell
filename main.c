@@ -38,6 +38,6 @@ int main(int ac, char **av)
 	}
 	populate_env_list(command);
 	read_history(command);
-	hsh(command, av);
+	prog_loop(command, av);
 	return (EXIT_SUCCESS);
 }

@@ -1,14 +1,14 @@
 #include "shell.h"
 
 /**
- * hsh - function that has the main shell loop
+ * prog_loop - function that has the main shell loop
  *
  * @command: structure of potential arguments
  * @av:the argument vector
  *
  * Return:0 on success, 1 on error or error code
  */
-int hsh(command_t *command, char **av)
+int prog_loop(command_t *command, char **av)
 {
 	ssize_t r = 0;
 	int builtin_ret = 0;
