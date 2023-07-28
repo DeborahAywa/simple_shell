@@ -28,36 +28,25 @@ int _strcmp(char *s1, char *s2)
 }
 
 /**
- * *_strcat-function that concatenates string/
- * src to dest /
- *
- * @dest:the destination where src is to be /
+ * _strcat-function that concatenates string
+ * @s1: destination where @s2 is to be
  * appended
  *
- * @src:the string to be appended
+ * @s2:the string to be appended
  *
- * Return:a pointer to string dest
+ * Return:a pointer to string s1
  */
 
-char *_strcat(char *dest, char *src)
+char *_strcat(char *s1, char *s2)
 {
-	int i = 0;
-	int j = 0;
-	int p;
+	char *result = s1;
 
-	while (dest[i] != '\0')
-	{
-		i++;
-	}
-	while (src[j] != '\0')
-	{
-		j++;
-	}
-	for (p = 0; p <= j; p++)
-	{
-		dest[i + p] = src[p];
-	}
-	return (dest);
+	while (*s1)
+		s1++;
+	while (*s2)
+		*s1++ = *s2++;
+	*s1 = *s2;
+	return (result);
 }
 
 /**

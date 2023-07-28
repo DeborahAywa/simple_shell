@@ -1,5 +1,5 @@
 #include "shell.h"
-#include <stdlib.h
+#include <stdlib.h>
 
 /**
  * is_chain - function that tests if current characters

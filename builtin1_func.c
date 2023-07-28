@@ -73,7 +73,7 @@ int _mycd(command_t *command)
 	}
 	else
 	{
-		_setenv(command, "OLDPWD", _getenv(command, "PWD = ");
+		_setenv(command, "OLDPWD", _getenv(command, "PWD = "));
 		_setenv(command, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
