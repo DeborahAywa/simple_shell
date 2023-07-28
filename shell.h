@@ -98,8 +98,8 @@ typedef struct command
 } command_t;
 
 #define COMMAND_INIT \
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL,
-	NULL, NULL, 0, 0, NULL, \ 0, 0, 0}
+({NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL,
+	NULL, NULL, 0, 0, NULL, \0, 0, 0})
 
 /**
  * struct builtin - a builtin string having related functions
@@ -109,8 +109,8 @@ typedef struct command
 typedef struct builtin
 {
 	char *type;
-	int(*func)(command_t);
-}builtin_table;
+	int (*func)(command_t *);
+} builtin_table;
 
 /*string functions str_functions.c*/
 int _strcmp(char *s1, char *s2);
